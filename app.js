@@ -40,11 +40,12 @@ app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cors());
 
-app.get("/djon", allowCors(handler), (req, res) => {
+
+app.get("/djon",  (req, res) => {
   res.json({ result: "GET Vercel", status: "DJON success" });
 });
 
-app.post("/poly", allowCors(handler), (req, res) => {
+app.post("/poly",  (req, res) => {
   const body = req.body
   res.json({ result: "POST Vercel", status: "POLY success", body });
 });
@@ -61,5 +62,7 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
   res.status(500).json({ message: err.message });
 });
+
+allowCors(handler)
 
 module.exports = app;
