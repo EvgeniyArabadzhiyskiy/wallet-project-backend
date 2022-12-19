@@ -29,7 +29,7 @@ app.use("/api/transactions", transactionsRouter);
 // app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
-  res.status(404).json({ message: "Not found 7777" });
+  res.status(404).json({ message: "Not found 888" });
 });
 
 app.use((err, req, res, next) => {
