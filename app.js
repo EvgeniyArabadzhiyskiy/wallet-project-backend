@@ -14,6 +14,7 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cors());
+app.use(express.static("public"));
 
 app.get("/djon", (req, res) => {
   res.json({ result: "GET Vercel", status: "DJON success" });
