@@ -1,9 +1,10 @@
 {
   "version": 2,
+  "headers": [],
   "name": "wallet",
   
   "builds": [{ "src": "server.js", "use": "@vercel/node" }],
   "routes": [{ "src": "/(.*)", "dest": "server.js" }],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./",
-  "headers": []
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
+  
 }
