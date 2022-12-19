@@ -5,10 +5,19 @@
   "builds": [
     {
       "src": "server.js",
-      "use": "@vercel/node",
-      "headers": [{ "source": "/(.*)" }]
+      "use": "@vercel/node"
     }
   ],
-  "routes": [{ "src": "/(.*)", "dest": "server.js" }],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js",
+      "headers": [
+        {
+          "source": "/(.*)"
+        }
+      ]
+    }
+  ],
   "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
 }
