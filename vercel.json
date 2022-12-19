@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "wallet-project",
+    "builds": [
+       { "/": "app.js", "use": "@vercel/node" }
+    ],
+    "routes": [
+       { "/": "/(.*)", "dest": "/app.js" }
+    ]
+ }
