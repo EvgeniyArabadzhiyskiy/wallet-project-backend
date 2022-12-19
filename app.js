@@ -28,7 +28,7 @@ const handler = (req, res) => {
   res.end(d.toString())
 }
 
-
+// module.exports = allowCors(handler)
 
 const { authRouter, transactionsRouter } = require("./routes/api");
 
@@ -40,11 +40,11 @@ app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cors());
 
-app.get("/djon", (req, res) => {
+app.get("/djon", allowCors(handler), (req, res) => {
   res.json({ result: "GET Vercel", status: "DJON success" });
 });
 
-app.post("/poly", (req, res) => {
+app.post("/poly", allowCors(handler), (req, res) => {
   const body = req.body
   res.json({ result: "POST Vercel", status: "POLY success", body });
 });
@@ -63,4 +63,3 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
-module.exports = allowCors(handler)
