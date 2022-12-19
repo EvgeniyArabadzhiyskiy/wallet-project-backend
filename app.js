@@ -15,13 +15,13 @@ app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cors());
 
-app.get("/djon", (req, res) => {
-  res.json({ result: "GET Vercel", status: "DJON success" });
-});
+// app.get("/djon", (req, res) => {
+//   res.json({ result: "GET Vercel", status: "DJON success" });
+// });
 
-app.post("/poly", (req, res) => {
-  res.json({ result: "POST Vercel", status: "POLY success" });
-});
+// app.post("/poly", (req, res) => {
+//   res.json({ result: "POST Vercel", status: "POLY success" });
+// });
 
 app.use("/api/users", authRouter);
 app.use("/api/transactions", transactionsRouter);
