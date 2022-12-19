@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "headers": [],
+  "headers": [{"source": "/(.*)"}],
   "name": "wallet",
   
   "builds": [{ "src": "server.js", "use": "@vercel/node" }],
