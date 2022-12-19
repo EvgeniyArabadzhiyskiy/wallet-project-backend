@@ -14,7 +14,6 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 app.use(logger(formatsLogger));
 app.use(express.json());
 app.use(cors());
-app.use(express.static("public"));
 
 app.get("/djon", (req, res) => {
   res.json({ result: "GET Vercel", status: "DJON success" });
@@ -31,7 +30,7 @@ app.use("/api/transactions", transactionsRouter);
 // app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
-  res.status(404).json({ message: "Not found 444" });
+  res.status(404).json({ message: "Not found 777" });
 });
 
 app.use((err, req, res, next) => {
