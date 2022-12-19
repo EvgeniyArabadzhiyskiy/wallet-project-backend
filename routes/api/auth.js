@@ -7,17 +7,6 @@ const { validateBody, authenticate } = require("../../middlewares");
 
 const router = express.Router();
 
-// router.get("/djon", (req, res) => {
-//     res.json({ result: "GET Vercel", status: "DJON success" });
-//   }
-// );
-
-// router.post("/poly", (req, res) => {
-//   const body = req.body
-//   res.json({ result: "POST Vercel", status: "POLY success", body });
-// }
-// );
-
 // user register route
 
 router.post(
