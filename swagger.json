@@ -8,8 +8,8 @@
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"servers": [
-		{ "url": "https://wallet-project.onrender.com/api" },
-		{ "url": "http://localhost:3000/api" }
+		{ "url": "https://wallet-backend.onrender.com/api" },
+		{ "url": "http://localhost:7000/api" }
 	],
 	"tags": [
 		{ "name": "Auth", "description": "Authorization endpoints" },
