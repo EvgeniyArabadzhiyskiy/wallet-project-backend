@@ -8,7 +8,7 @@
 	"consumes": ["application/json"],
 	"produces": ["application/json"],
 	"servers": [
-		{ "url": "https://wallet-backend.onrender.com/api" },
+		{ "url": "https://wallet-backend-xmk0.onrender.com/api" },
 		{ "url": "http://localhost:7000/api" }
 	],
 	"tags": [
