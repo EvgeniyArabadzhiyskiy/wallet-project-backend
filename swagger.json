@@ -9,7 +9,7 @@
 	"produces": ["application/json"],
 	"servers": [
 		{ "url": "https://wallet-backend-xmk0.onrender.com/api" },
-		{ "url": "http://localhost:7000/api" }
+		{ "url": "http://localhost:5000/api" }
 	],
 	"tags": [
 		{ "name": "Auth", "description": "Authorization endpoints" },
