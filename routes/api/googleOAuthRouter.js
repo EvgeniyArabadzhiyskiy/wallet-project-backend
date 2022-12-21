@@ -100,7 +100,7 @@ const { controllerWrapper } = require('../../middlewares');
 const googleAuth = async (req, res) => {
     const stringifiedParams = queryString.stringify({
         client_id: '60890143461-jtiqjs6s9kvffqal70e6ecmtjb9gqh2e.apps.googleusercontent.com',
-        redirect_uri: `http://localhost:4001/auth-google/google-redirect`,
+        redirect_uri: `https://wallet-backend-xmk0.onrender.com/auth-google/google-redirect`,
         scope:[
             'https://www.googleapis.com/auth/userinfo.email',
             'https://www.googleapis.com/auth/userinfo.profile',
@@ -132,7 +132,7 @@ const googleRedirect = async (req, res) => {
     data: {
         client_id: '60890143461-jtiqjs6s9kvffqal70e6ecmtjb9gqh2e.apps.googleusercontent.com',
         client_secret: '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',
-        redirect_uri: `http://localhost:4001/auth-google/google-redirect`,
+        redirect_uri: `https://wallet-backend-xmk0.onrender.com/auth-google/google-redirect`,
         grant_type: 'authorization_code',
         code: code,
     }
