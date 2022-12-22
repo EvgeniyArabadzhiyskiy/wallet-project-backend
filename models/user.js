@@ -3,6 +3,8 @@ const Joi = require("joi");
 
 const { handleSaveErrors } = require("../utils");
 
+// const emailRegexp = /^[A-Za-z0-9_!#$%&'*+/=?`{|}~^.-]+@[A-Za-z0-9.-]+$/;
+
 const userSchema = new Schema(
 	{
 		email: {
@@ -11,19 +13,23 @@ const userSchema = new Schema(
 			// match: [emailRegexp, "Email is invalid"],
 			unique: true,
 		},
+
 		password: {
 			type: String,
-			minlength: 6,
+			minLenght: [6, "Passwords must be at least 6 characters long."],
 			required: [true, "Password is required"],
 		},
+
 		firstName: {
 			type: String,
+			minLenght: [2, "First Name must be at least 2 characters long."],
 		},
 
 		token: {
 			type: String,
 			default: null,
 		},
+		
 		balance: Number,
 		default: 0,
 	},
@@ -37,7 +43,7 @@ const sigUpInSchema = Joi.object({
 		// .pattern(emailRegexp)
 		.required(),
 	password: Joi.string().min(6).required(),
-	firstName: Joi.string().required(),
+	firstName: Joi.string().min(2).required(),
 });
 
 const logInShema = Joi.object({
