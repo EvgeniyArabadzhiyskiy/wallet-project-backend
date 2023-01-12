@@ -5,7 +5,9 @@ require("dotenv").config();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const { authRouter, transactionsRouter, googleRouter } = require("./routes/api");
+const { authRouter, transactionsRouter,
+  //  googleRouter 
+  } = require("./routes/api");
 
 
 const app = express();
@@ -18,7 +20,7 @@ app.use(cors());
 
 app.use("/api/users", authRouter);
 app.use("/api/transactions", transactionsRouter);
-app.use("/auth-google", googleRouter);
+// app.use("/auth-google", googleRouter);
 app.use("/api-docs", swaggerUi.serve);
 app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
