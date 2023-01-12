@@ -2,7 +2,7 @@ const { Schema, model } = require("mongoose");
 const Joi = require("joi");
 
 const { handleSaveErrors } = require("../utils");
-const { string } = require("joi");
+// const { string } = require("joi");
 
 const transactionSchema = new Schema(
 	{
