@@ -23,7 +23,7 @@ app.use("/api-docs", swaggerUi.serve);
 app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
 app.use((req, res) => {
-  res.status(404).json({ message: "Not found 777" });
+  res.status(404).json({ message: "Not found" });
 });
 
 app.use((err, req, res, next) => {
