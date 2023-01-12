@@ -6,7 +6,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
 const { authRouter, transactionsRouter,
-  //  googleRouter 
+   googleRouter 
   } = require("./routes/api");
 
 
@@ -20,7 +20,7 @@ app.use(cors());
 
 app.use("/api/users", authRouter);
 app.use("/api/transactions", transactionsRouter);
-// app.use("/auth-google", googleRouter);
+app.use("/auth-google", googleRouter);
 app.use("/api-docs", swaggerUi.serve);
 app.get("/api-docs", swaggerUi.setup(swaggerDocument));
 
