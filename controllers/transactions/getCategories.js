@@ -5,7 +5,7 @@ const getCategories = async (req, res, next) => {
 	try {
 		const _id = req.userId;
 
-		const сategories = await Transaction.aggregate()
+		const categories = await Transaction.aggregate()
 			.match({
 				owner: ObjectId(_id),
 			})
@@ -13,7 +13,7 @@ const getCategories = async (req, res, next) => {
 				_id: "$category",
 			});
 		const allCategories = [];
-		сategories.forEach((el) => {
+		categories.forEach((el) => {
 			allCategories.push(el._id);
 		});
 		res.json(allCategories);
