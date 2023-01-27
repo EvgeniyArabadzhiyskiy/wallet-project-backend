@@ -12,11 +12,11 @@ const editTransaction = async (req, res, next) => {
 
     const prevResult = await Transaction.findOne({ _id: transactionId, owner: userId });
     
-    const { typeOperation: prevTypeOperation, amount: prevAmount } = prevResult;
+    const { typeOperation: prevTypeOperation, amount: prevAmount, date: prevDate } = prevResult;
     const prevSum = prevTypeOperation === "income" ? prevAmount : -prevAmount;
 
     const result = await Transaction.findOneAndUpdate(
-      { _id: transactionId, owner: userId }, { ...req.body, timestamps}, { new: true }
+      { _id: transactionId, owner: userId }, { ...req.body, date: prevDate, timestamps}, { new: true }
     );
 
     const { typeOperation, amount } = result;
