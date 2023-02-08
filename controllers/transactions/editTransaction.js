@@ -8,8 +8,6 @@ const editTransaction = async (req, res, next) => {
     const { transactionId } = req.params;
     const { error } = addSchema.validate(req.body);
     if (error) throw new Error(error);
-    // const timestamps = Number(new Date(req.body.date).getTime());
-    // console.log("editTransaction  timestamps", timestamps);
 
     const prevResult = await Transaction.findOne({ _id: transactionId, owner: userId });
     
