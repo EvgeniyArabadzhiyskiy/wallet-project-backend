@@ -30,7 +30,26 @@ const add = async (req, res, next) => {
 			timestamps,
 			balanceAfterTransaction: balance,
 		});
-		res.status(201).json(transaction);
+		
+		const allTransactions = await Transaction.find(
+			{ owner: _id },
+			{ _id: 1 }
+		  ).sort({ timestamps: -1, createdAt: -1 });
+		   // Так не работает Будет ошибка
+		   //   .findIndex((element) => element._id.toString() === transaction._id.toString())
+		
+        // Если не сделать копию allTransactions то получаем ошибку
+		  const indexNewTransaction = allTransactions.findIndex(     
+			(element) => element._id.toString() === transaction._id.toString()
+		  );
+
+		
+		const result = {
+			...transaction._doc,  // Если вернуть просто transaction то почемуто приходит объект с системными данными
+			position: indexNewTransaction,
+		};
+		
+		res.status(201).json(result);
 	} catch (error) {
 		next(error);
 	}
