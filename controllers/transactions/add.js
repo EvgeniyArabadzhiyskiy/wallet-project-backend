@@ -46,7 +46,7 @@ const add = async (req, res, next) => {
 		
 		const result = {
 			...transaction._doc,  // Если вернуть просто transaction то почемуто приходит объект с системными данными
-			position: indexNewTransaction,
+			position: indexNewTransaction + 1,
 		};
 		
 		res.status(201).json(result);
