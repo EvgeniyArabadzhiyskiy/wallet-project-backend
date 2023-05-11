@@ -1,6 +1,5 @@
 const { User } = require("../../models/user");
 
-// get user balance
 const getBalance = async (req, res, next) => {
   try {
     const id = req.userId;
