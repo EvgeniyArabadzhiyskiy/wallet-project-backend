@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/users", authRouter);
-app.use("/api/transaction", transactionsRouter);
+app.use("/api/transactions", transactionsRouter);
 app.use("/api/auth-google", googleRouter);
 app.use("/api-docs", swaggerUi.serve);
 app.get("/api-docs", swaggerUi.setup(swaggerDocument));
