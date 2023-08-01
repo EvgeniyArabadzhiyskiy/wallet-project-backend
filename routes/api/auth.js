@@ -7,6 +7,9 @@ const { validateBody, authenticate } = require("../../middlewares");
 
 const router = express.Router();
 
+// user test route
+router.get("/test", ctrlWrapper(ctrl.test))
+
 // user register route
 router.post("/register",validateBody(schemas.register), ctrlWrapper(ctrl.register));
 
