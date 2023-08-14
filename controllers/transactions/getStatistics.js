@@ -10,7 +10,7 @@ const getStatistics = async (req, res, next) => {
 		// if (!month && year) {
 		// 	fullYear = true;
 		// }
-		if (month && !year) year = "2022";
+		if (month && !year) year = "2020";
 		const { minTimestamps, maxTimestamps } = getMinAndMaxTimestamps({
 			month,
 			year,
@@ -27,6 +27,7 @@ const getStatistics = async (req, res, next) => {
 				type: { $first: "$typeOperation" },
 			})
 			.sort({ _id: 1 });
+			
 		res.json(statistics);
 	} catch (error) {
 		next(error);
