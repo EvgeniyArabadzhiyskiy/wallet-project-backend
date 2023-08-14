@@ -3,13 +3,13 @@ const getMinAndMaxTimestamps = require("../../utils/getMinAndMaxTimestamps");
 const { ObjectId } = require("mongoose").Types;
 
 const getStatistics = async (req, res, next) => {
-	let fullYear = false;
+	// let fullYear = false;
 	try {
 		const _id = req.userId;
 		let { month = null, year = null } = req.query;
-		if (!month && year) {
-			fullYear = true;
-		}
+		// if (!month && year) {
+		// 	fullYear = true;
+		// }
 		if (month && !year) year = "2022";
 		const { minTimestamps, maxTimestamps } = getMinAndMaxTimestamps({
 			month,
@@ -25,7 +25,8 @@ const getStatistics = async (req, res, next) => {
 				_id: "$category",
 				totalSum: { $sum: "$amount" },
 				type: { $first: "$typeOperation" },
-			});
+			})
+			.sort({ _id: 1 });
 		res.json(statistics);
 	} catch (error) {
 		next(error);
