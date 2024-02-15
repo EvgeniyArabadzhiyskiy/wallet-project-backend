@@ -28,14 +28,17 @@ const login = async (req, res, next) => {
 
   await User.findByIdAndUpdate(user._id, { token });
 
-  res.status(201).json({
+  // res.setHeader("Set-Cookie", "userName=DJON; Max-Age=900000; Path=/");
+  res.setHeader("Set-Cookie", `accessToken=${token}; Max-Age=${30 * 24 * 60 * 60}; Path=/`);
+
+  res.json({
     user: {
       email: user.email,
       firstName: user.firstName,
       balance: user.balance
     },
     token,
-  });
+  })
 };
 
 module.exports = login;
