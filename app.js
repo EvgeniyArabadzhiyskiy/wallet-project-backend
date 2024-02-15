@@ -5,7 +5,11 @@ require("dotenv").config();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
 
-const { authRouter, transactionsRouter, googleRouter } = require("./routes/api");
+const {
+  authRouter,
+  transactionsRouter,
+  googleRouter,
+} = require("./routes/api");
 
 const app = express();
 
@@ -13,7 +17,24 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
 app.use(express.json());
-app.use(cors());
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: [`${process.env.CORS_URL}`, "https://example.com"], // Замените на ваш домен
+    credentials: true, // Разрешаем передавать куки
+  })
+);
+
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", `${process.env.CORS_URL}`)
+//   res.setHeader("Access-Control-Allow-Credentials", "true");
+//   // res.setHeader("Access-Control-Max-Age", "900000");
+//   res.setHeader("Access-Control-Allow-Headers", "content-type");
+//   res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" );
+
+//   next();
+// });
 
 app.use("/api/users", authRouter);
 app.use("/api/transactions", transactionsRouter);
