@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger.json");
+const cookieParser = require("cookie-parser")
 
 const {
   authRouter,
@@ -17,14 +18,15 @@ const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
 app.use(express.json());
-// app.use(cors());
+app.use(cookieParser())
+app.use(cors());
 
-app.use(
-  cors({
-    origin: [`${process.env.CORS_URL}`, "https://example.com"], // Замените на ваш домен
-    credentials: true, // Разрешаем передавать куки
-  })
-);
+// app.use(
+//   cors({
+//     origin: [`${process.env.CORS_URL}`, "https://example.com"], // Замените на ваш домен
+//     credentials: true, // Разрешаем передавать куки
+//   })
+// );
 
 // app.use((req, res, next) => {
 //   res.setHeader("Access-Control-Allow-Origin", `${process.env.CORS_URL}`)
