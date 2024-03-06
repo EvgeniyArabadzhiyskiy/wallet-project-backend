@@ -31,6 +31,7 @@ const add = async (req, res, next) => {
 			balanceAfterTransaction: balance,
 		});
 		
+		//=============================================================
 		const allTransactions = await Transaction.find(
 			{ owner: _id },
 			{ _id: 1 }
@@ -39,14 +40,14 @@ const add = async (req, res, next) => {
 		   //   .findIndex((element) => element._id.toString() === transaction._id.toString())
 		
         // Если не сделать копию allTransactions то получаем ошибку
-		  const indexNewTransaction = allTransactions.findIndex(     
+		  const indexNewTransaction = allTransactions.findIndex(     // Не использую Position  Можно попробовать удалить
 			(element) => element._id.toString() === transaction._id.toString()
 		  );
 
-		
+		// Не использую Position Можно попробовать удалить
 		const result = {
 			...transaction._doc,  // Если вернуть просто transaction то почемуто приходит объект с системными данными
-			position: indexNewTransaction + 1,
+			position: indexNewTransaction + 1, 
 		};
 		
 		res.status(201).json(result);
